@@ -49,6 +49,8 @@ class BaseAWSObject(object):
 
         # Now that it is initialized, populate it with the kwargs
         for k, v in kwargs.items():
+            if v is None:
+                continue
             # Special case Resource Attributes
             if k in self.attributes:
                 self.resource[k] = v

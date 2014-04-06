@@ -113,6 +113,10 @@ def do_resources(d):
         (_, tropo_object) = generate_troposphere_object(v['Type'])
         print '%s = t.add_resource(%s(' % (object_name, tropo_object)
         print '    "%s",' % (k, )
+        if 'Properties' not in v:
+            print "))"
+            print
+            continue
         for pk, pv in v['Properties'].items():
             if pk == "Tags":
                 print '    Tags=Tags('
